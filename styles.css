@@ -225,6 +225,7 @@ h1 {
 }
 
 .intro-band,
+.parent-course-section,
 .tracks-section,
 .works-section,
 .outcomes-section,
@@ -282,6 +283,67 @@ h1 {
   border: 2px solid var(--ink);
   border-radius: 999px;
   font-weight: 900;
+}
+
+.parent-course-section {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(300px, .58fr);
+  gap: 28px;
+  align-items: center;
+  background: #101827;
+  color: var(--white);
+}
+
+.parent-course-section .eyebrow {
+  color: var(--yellow);
+}
+
+.parent-course-copy h2 {
+  margin-bottom: 16px;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 1.05;
+}
+
+.parent-course-copy p:not(.eyebrow),
+.parent-course-card p {
+  color: #d8dfec;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 650;
+}
+
+.parent-course-card {
+  padding: 26px;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 2px solid var(--white);
+  border-radius: 8px;
+  box-shadow: 8px 8px 0 var(--white);
+}
+
+.parent-course-card span {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.parent-course-card strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.08;
+}
+
+.parent-course-card p {
+  color: #4a3e17;
+  margin-bottom: 22px;
+}
+
+.parent-course-card .primary-btn {
+  background: var(--white);
 }
 
 .section-heading {
@@ -1040,6 +1102,7 @@ details p {
 
   .hero,
   .intro-band,
+  .parent-course-section,
   .track-panel,
   .scene-section,
   .teacher-section,

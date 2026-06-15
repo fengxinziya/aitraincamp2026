@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI成人应用课｜AI能帮你做什么</title>
+    <meta name="description" content="面向家长和成人的AI应用方向全景图：家庭教育、工作提效、内容生产、副业变现和AI入门方法。">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body.adult-page {
+        background: #fffdf8;
+      }
+
+      .adult-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, .62fr);
+        gap: clamp(28px, 5vw, 64px);
+        align-items: center;
+        padding: clamp(54px, 8vw, 96px) clamp(20px, 5vw, 72px);
+        background: linear-gradient(180deg, #dff4ff 0%, #fffdf8 78%);
+        border-bottom: 2px solid var(--ink);
+      }
+
+      .adult-hero h1 {
+        max-width: 860px;
+        margin-bottom: 20px;
+        font-size: clamp(46px, 7vw, 88px);
+        line-height: .98;
+      }
+
+      .adult-hero p {
+        max-width: 720px;
+        color: #263244;
+        font-size: clamp(18px, 2vw, 23px);
+        line-height: 1.7;
+        font-weight: 700;
+      }
+
+      .adult-panel {
+        padding: 24px;
+        background: var(--white);
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        box-shadow: 10px 10px 0 var(--ink);
+      }
+
+      .adult-panel strong {
+        display: block;
+        margin-bottom: 14px;
+        font-size: 24px;
+      }
+
+      .adult-panel ul {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .adult-panel li {
+        padding: 12px;
+        background: #edf8ff;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        font-weight: 850;
+      }
+
+      .adult-nav {
+        position: sticky;
+        top: 72px;
+        z-index: 12;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 16px clamp(20px, 5vw, 72px);
+        background: rgba(255, 253, 248, .94);
+        border-bottom: 1px solid rgba(17, 24, 39, .1);
+        backdrop-filter: blur(18px);
+      }
+
+      .adult-nav button {
+        min-height: 42px;
+        padding: 0 16px;
+        white-space: nowrap;
+        cursor: pointer;
+        background: var(--white);
+        border: 2px solid var(--ink);
+        border-radius: 999px;
+        font-weight: 900;
+      }
+
+      .adult-nav button.is-active {
+        background: var(--yellow);
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+
+      .adult-main {
+        padding: clamp(54px, 7vw, 86px) clamp(20px, 5vw, 72px);
+      }
+
+      .adult-guide {
+        margin-bottom: 38px;
+        padding: clamp(22px, 3vw, 32px);
+        background: var(--paper);
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        box-shadow: 6px 6px 0 var(--orange);
+      }
+
+      .adult-guide h2,
+      .adult-section h2 {
+        margin-bottom: 18px;
+        font-size: clamp(30px, 4.5vw, 54px);
+        line-height: 1.08;
+      }
+
+      .guide-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+      }
+
+      .guide-links a {
+        padding: 12px 14px;
+        background: var(--white);
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        font-weight: 850;
+      }
+
+      .adult-section {
+        margin-top: 54px;
+      }
+
+      .adult-section[data-cat] {
+        display: block;
+      }
+
+      .adult-section.is-filtered-out {
+        display: none;
+      }
+
+      .adult-section > p {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+        font-weight: 650;
+      }
+
+      .adult-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .adult-card {
+        padding: 22px;
+        background: var(--white);
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        box-shadow: 5px 5px 0 var(--ink);
+      }
+
+      .adult-card .num {
+        display: inline-grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 16px;
+        color: var(--white);
+        background: var(--blue);
+        border-radius: 50%;
+        font-weight: 950;
+      }
+
+      .adult-card h3 {
+        margin-bottom: 8px;
+        font-size: 24px;
+        line-height: 1.18;
+      }
+
+      .adult-card .tagline {
+        margin-bottom: 14px;
+        color: #334155;
+        font-size: 16px;
+        line-height: 1.6;
+        font-weight: 800;
+      }
+
+      .adult-card p {
+        color: var(--muted);
+        line-height: 1.75;
+        font-weight: 650;
+      }
+
+      .adult-card .who {
+        margin-top: 16px;
+        padding: 12px;
+        background: #f8fafc;
+        border: 2px solid var(--line);
+        border-radius: 8px;
+        color: #334155;
+        font-size: 14px;
+        line-height: 1.65;
+        font-weight: 750;
+      }
+
+      .adult-contact {
+        margin-top: 64px;
+      }
+
+      @media (max-width: 980px) {
+        .adult-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .adult-nav {
+          top: 64px;
+        }
+      }
+    </style>
+  </head>
+  <body class="adult-page">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="返回暑假AI科创营首页">
+        <span class="brand-mark">AI</span>
+        <span>成人应用课</span>
+      </a>
+      <nav class="top-nav" aria-label="页面导航">
+        <a href="#guide">选方向</a>
+        <a href="#child">家庭教育</a>
+        <a href="#work">工作提效</a>
+        <a href="#money">副业变现</a>
+      </nav>
+      <a class="nav-cta" href="#contact">咨询课程</a>
+    </header>
+
+    <main>
+      <section class="adult-hero">
+        <div>
+          <p class="eyebrow">AI For Parents & Adults</p>
+          <h1>AI能帮你做什么？</h1>
+          <p>这是一张成人AI应用全景图。无论你是家长、职场人、个体经营者，还是想探索副业的人，都可以先从一个真实问题开始，把AI用进自己的生活和工作。</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#guide">先看我适合哪类</a>
+            <a class="secondary-btn" href="index.html" target="_blank" rel="noopener">查看少年营</a>
+          </div>
+        </div>
+        <div class="adult-panel">
+          <strong>这门课不只是工具清单</strong>
+          <ul>
+            <li>从你的真实场景出发，而不是从软件按钮出发</li>
+            <li>把家庭教育、工作提效、内容生产和副业变现串起来</li>
+            <li>学会提问、拆任务、搭流程，AI更新了也能继续用</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="adult-nav" id="adultNav">
+        <button type="button" class="is-active" data-filter="all">全部方向</button>
+        <button type="button" data-filter="child">跟孩子有关</button>
+        <button type="button" data-filter="work">跟工作有关</button>
+        <button type="button" data-filter="money">跟变现有关</button>
+        <button type="button" data-filter="basic">入门方法</button>
+      </div>
+
+      <section class="adult-main">
+        <div class="adult-guide" id="guide">
+          <p class="eyebrow">Start Here</p>
+          <h2>你现在最想解决什么？</h2>
+          <div class="guide-links">
+            <a href="#c1">辅导孩子作业经常卡住</a>
+            <a href="#c2">想帮孩子整理学习笔记</a>
+            <a href="#c4">每天要写文案</a>
+            <a href="#c5">每月要做汇报PPT</a>
+            <a href="#c6">每周要做数据报告</a>
+            <a href="#c7">有想法想做成工具</a>
+            <a href="#c8">想做自媒体但没有团队</a>
+            <a href="#c10">想做副业但不想囤货</a>
+            <a href="#c17">不知道从哪里开始</a>
+          </div>
+        </div>
+
+        <section class="adult-section" id="child" data-cat="child">
+          <p class="eyebrow">Family & Learning</p>
+          <h2>跟孩子有关</h2>
+          <p>把AI用在家庭教育里，重点不是替孩子学习，而是帮家长更会讲、更会整理、更会陪。</p>
+          <div class="adult-card-grid">
+            <article class="adult-card" id="c1">
+              <span class="num">1</span>
+              <h3>AI家庭教育</h3>
+              <div class="tagline">你不懂的题，AI帮你讲；你没时间陪的作业，AI帮你盯着。</div>
+              <p>数学题不会讲，AI生成解题步骤和知识点讲解；作文没思路，AI帮孩子列提纲、找素材、润色修改；背古诗文记不住，AI可以生成记忆口诀、注释和互动问答。</p>
+              <div class="who">适合：辅导作业经常卡住、想高质量陪伴、想给孩子建立学习档案的家长。</div>
+            </article>
+            <article class="adult-card" id="c2">
+              <span class="num">2</span>
+              <h3>Obsidian孩子知识库</h3>
+              <div class="tagline">用AI帮孩子整理笔记、建立知识体系。</div>
+              <p>用Obsidian和AI搭建孩子的第二大脑，自动整理学习笔记、提取关键概念，生成读书笔记、课程笔记、项目笔记模板，并做复习提醒。</p>
+              <div class="who">适合：孩子笔记很乱、资料很多、想培养整理知识习惯的家庭。</div>
+            </article>
+            <article class="adult-card" id="c3">
+              <span class="num">3</span>
+              <h3>Obsidian个人知识库</h3>
+              <div class="tagline">给自己也搭一个知识库，学过的东西不再忘。</div>
+              <p>用双向链接和标签建立知识网络，AI辅助摘要、关键概念提取，把读书笔记、学习笔记、工作笔记统一管理。</p>
+              <div class="who">适合：看了很多书但记不住、工作中经常查资料、想建立个人知识体系的人。</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="adult-section" id="work" data-cat="work">
+          <p class="eyebrow">Work Efficiency</p>
+          <h2>跟工作有关</h2>
+          <p>把AI变成工作助理，帮你写、算、整理、汇报、自动化，减少重复劳动。</p>
+          <div class="adult-card-grid">
+            <article class="adult-card" id="c4">
+              <span class="num">4</span>
+              <h3>AI商业文案</h3>
+              <div class="tagline">不会写文案？AI帮你打草稿，你只需要改改就能用。</div>
+              <p>建立万能Prompt体系，覆盖朋友圈文案、产品介绍、活动方案和销售转化文案，理解用户心理和转化逻辑。</p>
+              <div class="who">适合：每天要发朋友圈、写推广文案、想提升文案转化率的人。</div>
+            </article>
+            <article class="adult-card" id="c5">
+              <span class="num">5</span>
+              <h3>AI PPT设计</h3>
+              <div class="tagline">会说话就行，排版交给AI。</div>
+              <p>从大纲、内容到排版，用AI辅助完成汇报、答辩、年报、提案等高频PPT，并建立自己的模板库。</p>
+              <div class="who">适合：每月/季度要做汇报PPT、想提升PPT专业感但不想耗太多时间的人。</div>
+            </article>
+            <article class="adult-card" id="c6">
+              <span class="num">6</span>
+              <h3>AI数据分析</h3>
+              <div class="tagline">Excel里的数据，AI帮你看出门道。</div>
+              <p>用AI处理Excel数据，完成清洗、整理、汇总、趋势分析、异常识别和图表生成，让报告更快更清楚。</p>
+              <div class="who">适合：每周/月要做数据报告、长期被表格消耗、想从数据里发现业务问题的人。</div>
+            </article>
+            <article class="adult-card" id="c7">
+              <span class="num">7</span>
+              <h3>AI编程</h3>
+              <div class="tagline">不用写代码，用说话的方式就能做出小工具。</div>
+              <p>用Cursor、Codex等AI工具，通过中文描述需求生成代码，做自动化工具、网站、小程序或内部管理系统。</p>
+              <div class="who">适合：有工具想法但不会开发、工作中有重复操作想自动化的人。</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="adult-section" id="money" data-cat="money">
+          <p class="eyebrow">Monetization</p>
+          <h2>跟变现有关</h2>
+          <p>AI不能保证赚钱，但可以显著降低内容生产、产品验证和个人品牌启动的成本。</p>
+          <div class="adult-card-grid">
+            <article class="adult-card" id="c8">
+              <span class="num">8</span>
+              <h3>AI一人公司</h3>
+              <div class="tagline">一个人跑起来内容生产线，不需要团队。</div>
+              <p>搭建从选题到发布的AI内容流水线，让AI记住账号定位、内容风格和受众画像，完成选题、写作、排版和发布。</p>
+              <div class="who">适合：想做自媒体、已有账号但产能跟不上、想用内容吸引客户的人。</div>
+            </article>
+            <article class="adult-card" id="c9">
+              <span class="num">9</span>
+              <h3>30天AI IP打造</h3>
+              <div class="tagline">从0到1建立个人品牌。</div>
+              <p>梳理个人IP定位、内容创作方法和公域引流到私域承接再到产品转化的完整路径。</p>
+              <div class="who">适合：有技能但不知道如何被看见、想建立个人品牌的人。</div>
+            </article>
+            <article class="adult-card" id="c10">
+              <span class="num">10</span>
+              <h3>AI小红书虚拟产品</h3>
+              <div class="tagline">轻资产卖东西，不用囤货、不用发快递。</div>
+              <p>把经验和技能变成模板、教程、方案等虚拟产品，学习选品、内容创作、店铺运营、数据复盘和持续变现路径。</p>
+              <div class="who">适合：有经验但不知道怎么变现、想做副业但不想压资金的人。</div>
+            </article>
+            <article class="adult-card" id="c11">
+              <span class="num">11</span>
+              <h3>AI小程序开发与变现</h3>
+              <div class="tagline">做一个小程序，用户用你就赚钱。</div>
+              <p>用AI开发微信小程序，从需求方向、开发上线、广告接入到引流变现，跑通工具类产品路径。</p>
+              <div class="who">适合：有产品想法但不懂开发、想做工具类产品变现的人。</div>
+            </article>
+            <article class="adult-card" id="c12">
+              <span class="num">12</span>
+              <h3>AI短剧全流程</h3>
+              <div class="tagline">用AI做短剧，门槛比你想的低。</div>
+              <p>学习AI剧本生成、人物图片设计、视频合成、工具选择和提升播放量的基础方法。</p>
+              <div class="who">适合：对短剧感兴趣、想做内容但觉得拍摄成本太高的人。</div>
+            </article>
+            <article class="adult-card" id="c13">
+              <span class="num">13</span>
+              <h3>AI视频出海</h3>
+              <div class="tagline">用AI做视频，发到YouTube赚美元。</div>
+              <p>了解AI视频制作工具、YouTube账号与频道装修、内容发布、海外运营逻辑、推荐算法和版权规则。</p>
+              <div class="who">适合：想做海外内容、对英语市场和海外收入感兴趣的人。</div>
+            </article>
+            <article class="adult-card" id="c14">
+              <span class="num">14</span>
+              <h3>AI绘画商用</h3>
+              <div class="tagline">会审美就能赚钱，AI帮你出图。</div>
+              <p>学习AI绘画流程、提示词设计和商用图实战，探索壁纸、素材授权、定制服务等变现路径。</p>
+              <div class="who">适合：有设计审美、想做视觉内容变现的人。</div>
+            </article>
+            <article class="adult-card" id="c15">
+              <span class="num">15</span>
+              <h3>短视频直播带货</h3>
+              <div class="tagline">不用真人出镜，AI内容也能带货。</div>
+              <p>学习AI图文和视频制作带货内容，理解账号搭建、选品逻辑、发布节奏、平台算法和转化技巧。</p>
+              <div class="who">适合：想做带货但没有内容生产能力的人。</div>
+            </article>
+            <article class="adult-card" id="c16">
+              <span class="num">16</span>
+              <h3>AI跨境电商</h3>
+              <div class="tagline">入驻海外电商平台，用AI辅助运营提效。</div>
+              <p>学习海外开店、选品、上架和运营核心能力，用AI辅助翻译、客服、文案、图片和数据分析。</p>
+              <div class="who">适合：有货源或供应链资源、想做跨境电商的人。</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="adult-section" id="basic" data-cat="basic">
+          <p class="eyebrow">Foundation</p>
+          <h2>所有人的入门课</h2>
+          <p>工具会变，但跟AI协作的底层方法不会很快过时。</p>
+          <div class="adult-card-grid">
+            <article class="adult-card" id="c17">
+              <span class="num">17</span>
+              <h3>AI提效核心方法论</h3>
+              <div class="tagline">学会跟AI说话，这是所有AI应用的底座。</div>
+              <p>学习提示词工程、上下文管理、AI工作流设计、人机协同意识和工具选型方法。不是记按钮，而是理解如何把任务交给AI。</p>
+              <div class="who">建议先学：大多数人用AI效果差，不是工具不行，而是不知道怎么给AI提供背景、拆任务和验收结果。</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact-section adult-contact" id="contact">
+          <div class="contact-copy">
+            <p class="eyebrow">Talk With Us</p>
+            <h2>想给自己也补一门AI应用课？</h2>
+            <p>可以先扫码或电话沟通你的场景：家庭教育、工作提效、副业探索，适合哪条路径我们一起判断。</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-info">
+              <span>咨询电话</span>
+              <a href="tel:15910813570">15910813570</a>
+              <small>扫码添加微信，咨询成人AI课程</small>
+            </div>
+            <img class="qr-code" src="assets/common/qr.jpg" alt="成人AI课程咨询微信二维码">
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const filterButtons = document.querySelectorAll("[data-filter]");
+      const sections = document.querySelectorAll(".adult-section[data-cat]");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          filterButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+          sections.forEach((section) => {
+            section.classList.toggle("is-filtered-out", filter !== "all" && section.dataset.cat !== filter);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
