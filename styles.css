@@ -234,6 +234,7 @@ h1 {
 .scene-section,
 .teacher-section,
 .pricing-section,
+.refund-section,
 .difference-section,
 .faq-section,
 .contact-section {
@@ -979,6 +980,59 @@ h1 {
   border-radius: 50%;
 }
 
+.refund-section {
+  background: #fffdf8;
+}
+
+.refund-section .section-heading p:not(.eyebrow) {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 650;
+}
+
+.refund-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.refund-card {
+  min-height: 160px;
+  padding: 20px;
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.refund-card span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 800;
+}
+
+.refund-card strong {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.15;
+}
+
+.refund-card.is-full {
+  background: #eaf6eb;
+  box-shadow: 5px 5px 0 var(--green);
+}
+
+.refund-card.is-none {
+  background: #fff1e4;
+  box-shadow: 5px 5px 0 var(--orange);
+}
+
 .difference-section {
   display: grid;
   grid-template-columns: minmax(260px, .55fr) minmax(0, 1fr);
@@ -1123,6 +1177,7 @@ details p {
   .daily-grid,
   .outcome-grid,
   .pricing-grid,
+  .refund-grid,
   .difference-section {
     grid-template-columns: 1fr;
   }
