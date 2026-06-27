@@ -192,6 +192,65 @@
         background: #fff7eb;
       }
 
+      .achievement-section {
+        background: #fffdf8;
+      }
+
+      .achievement-wrap {
+        position: relative;
+      }
+
+      .achievement-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .achievement-actions button {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        color: var(--ink);
+        cursor: pointer;
+        background: var(--yellow);
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        box-shadow: 3px 3px 0 var(--ink);
+        font-size: 28px;
+        font-weight: 950;
+        line-height: 1;
+      }
+
+      .achievement-track {
+        display: grid;
+        grid-auto-columns: minmax(210px, 22%);
+        grid-auto-flow: column;
+        gap: 16px;
+        overflow-x: auto;
+        padding: 0 8px 16px 0;
+        scroll-behavior: smooth;
+        scroll-snap-type: x proximity;
+      }
+
+      .achievement-track figure {
+        margin: 0;
+        padding: 10px;
+        background: var(--white);
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        box-shadow: 5px 5px 0 var(--ink);
+        scroll-snap-align: start;
+      }
+
+      .achievement-track img {
+        width: 100%;
+        aspect-ratio: 2 / 3;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
       .maker-diff-grid {
         display: grid;
         grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -213,6 +272,10 @@
         .maker-diff-grid,
         .contact-section {
           grid-template-columns: 1fr;
+        }
+
+        .achievement-track {
+          grid-auto-columns: 72%;
         }
       }
     </style>
@@ -311,6 +374,45 @@
             <h3>AI未来探索</h3>
             <p>理解AI的基本原理，学习安全使用AI，并畅想未来想用AI解决的问题。</p>
           </article>
+        </div>
+      </section>
+
+      <section class="maker-section achievement-section" id="achievements">
+        <div class="section-heading">
+          <p class="eyebrow">Achievement Cards</p>
+          <h2>孩子会解锁哪些AI创作成就</h2>
+          <p>这些项目卡片对应孩子在课程中可能完成的创作方向。家长可以横向滑动查看：从绘画、故事、动画、绘本，到游戏、代码、发明、未来城市设计。</p>
+        </div>
+        <div class="achievement-wrap">
+          <div class="achievement-actions">
+            <button type="button" data-achievement-prev aria-label="查看上一组成就卡">‹</button>
+            <button type="button" data-achievement-next aria-label="查看下一组成就卡">›</button>
+          </div>
+          <div class="achievement-track">
+            <figure><img src="assets/little-maker/achievement-00.jpg" alt="AI创作成就卡片：小小绘画家"></figure>
+            <figure><img src="assets/little-maker/achievement-01.jpg" alt="AI创作成就卡片：小小故事家"></figure>
+            <figure><img src="assets/little-maker/achievement-02.jpg" alt="AI创作成就卡片：小小动画导演"></figure>
+            <figure><img src="assets/little-maker/achievement-03.jpg" alt="AI创作成就卡片：小小绘本作家"></figure>
+            <figure><img src="assets/little-maker/achievement-04.jpg" alt="AI创作成就卡片：小小配音演员"></figure>
+            <figure><img src="assets/little-maker/achievement-05.jpg" alt="AI创作成就卡片：小小科学家"></figure>
+            <figure><img src="assets/little-maker/achievement-06.jpg" alt="AI创作成就卡片：小小发明家"></figure>
+            <figure><img src="assets/little-maker/achievement-07.jpg" alt="AI创作成就卡片：小小游戏设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-08.jpg" alt="AI创作成就卡片：小小艺术家"></figure>
+            <figure><img src="assets/little-maker/achievement-09.jpg" alt="AI创作成就卡片：小小代码魔法师"></figure>
+            <figure><img src="assets/little-maker/achievement-10.jpg" alt="AI创作成就卡片：小小宇宙探索家"></figure>
+            <figure><img src="assets/little-maker/achievement-11.jpg" alt="AI创作成就卡片：小小音乐创作家"></figure>
+            <figure><img src="assets/little-maker/achievement-12.jpg" alt="AI创作成就卡片：小小故事创作者"></figure>
+            <figure><img src="assets/little-maker/achievement-13.jpg" alt="AI创作成就卡片：小小生物创造家"></figure>
+            <figure><img src="assets/little-maker/achievement-14.jpg" alt="AI创作成就卡片：小小梦幻世界设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-15.jpg" alt="AI创作成就卡片：小小未来城市设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-16.jpg" alt="AI创作成就卡片：小小时装设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-17.jpg" alt="AI创作成就卡片：小小盲盒设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-18.jpg" alt="AI创作成就卡片：小小IP形象设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-19.jpg" alt="AI创作成就卡片：小小表情包设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-20.jpg" alt="AI创作成就卡片：小小诗境创作师"></figure>
+            <figure><img src="assets/little-maker/achievement-21.jpg" alt="AI创作成就卡片：小小英语绘本设计师"></figure>
+            <figure><img src="assets/little-maker/achievement-22.jpg" alt="AI创作成就卡片：小小数学游戏大师"></figure>
+          </div>
         </div>
       </section>
 
@@ -423,5 +525,14 @@
         </div>
       </section>
     </main>
+    <script>
+      const achievementTrack = document.querySelector(".achievement-track");
+      document.querySelector("[data-achievement-prev]")?.addEventListener("click", () => {
+        achievementTrack?.scrollBy({ left: -Math.max(achievementTrack.clientWidth * 0.82, 260), behavior: "smooth" });
+      });
+      document.querySelector("[data-achievement-next]")?.addEventListener("click", () => {
+        achievementTrack?.scrollBy({ left: Math.max(achievementTrack.clientWidth * 0.82, 260), behavior: "smooth" });
+      });
+    </script>
   </body>
 </html>
